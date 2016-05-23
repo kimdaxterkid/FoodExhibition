@@ -15,7 +15,8 @@ class FoodTableViewController: UITableViewController {
     var restaurantsLocations = ["Umall", "Mapple", "Main Street", "Main Street", "Blacksbrug Square", "Christianburg", "Christianburg", "悉尼", "悉尼", "悉尼", "纽约", "纽约", "纽约", "纽约", "纽约", "纽约", "纽约", "伦敦", "伦敦", "伦敦", "伦敦"]
     
     var restaurantsTypes = ["中餐 & 自助","中餐 & 外卖", "中餐 & 外卖", "中式快餐","越南菜 & 泰国菜", "中餐 & 美式中餐", "上海菜", "巧克力", "咖啡", "美式 & 海鲜", "美式", "美式","早餐 & 早午餐", "法式 & 茶", "咖啡 & 茶", "拉丁美式", "西班牙式", "西班牙式", "西班牙式", "英式", "泰式"]
-
+    var restaurantsCheckedMark = [Bool](count:21,repeatedValue:false)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,7 +47,6 @@ class FoodTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CustomTableViewCell
-        
         //设置图片的框架
         cell.restaurantName.text = restaurants[indexPath.row]
         cell.restaurantImage.image = UIImage(named: restaurantsImages[indexPath.row])
@@ -55,10 +55,44 @@ class FoodTableViewController: UITableViewController {
         cell.restaurantImage.clipsToBounds = true
         cell.restaurantLoccation.text = restaurantsLocations[indexPath.row]
         cell.restaurantType.text = restaurantsTypes[indexPath.row]
+        if restaurantsCheckedMark[indexPath.row] == true {
+            cell.accessoryType = .Checkmark
+        }
+        else {
+            cell.accessoryType = .None
+        }
         return cell
     }
  
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //创建响应菜单
+        //actionsheet是从底部弹出的
+        //alert是显示在中央的
+        let alert = UIAlertController(title: "Sir, you choose me!", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        //一个闭包结构,相当于写一个handler
+        let responseAction = { (action: UIAlertAction) -> Void in
+            let responseAlert = UIAlertController(title: "Sorry", message: "The phone number cannot access", preferredStyle: UIAlertControllerStyle.Alert)
+            let responseAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            responseAlert.addAction(responseAction)
+            self.presentViewController(responseAlert, animated: true, completion: nil)
+        }
+        //响应动作
+        let dialAction = UIAlertAction(title: "Call Restaurant 540-808-85\(indexPath.row)", style: UIAlertActionStyle.Default, handler: responseAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        let checkMark = UIAlertAction(title: "Mark", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            //单元格选中处理后的显示效果,打钩
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+            self.restaurantsCheckedMark[indexPath.row] = true
+        })
+        //把响应动作加入响应菜单中
+        alert.addAction(dialAction)
+        alert.addAction(checkMark)
+        alert.addAction(cancelAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
