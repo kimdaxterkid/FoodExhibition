@@ -11,7 +11,8 @@ import UIKit
 class FoodTableViewController: UITableViewController {
     
     var restaurants = ["HunanKing", "ChineseKitchen", "ChinaInn","HappyWok","MekongCafe","AsiaCafe","Charlis"]
-    
+    var restaurantsImages = ["cafedeadend.jpg", "homei.jpg", "teakha.jpg", "cafeloisl.jpg", "petiteoyster.jpg", "forkeerestaurant.jpg", "posatelier.jpg", "bourkestreetbakery.jpg", "haighschocolate.jpg", "palominoespresso.jpg", "upstate.jpg", "traif.jpg", "grahamavenuemeats.jpg", "wafflewolf.jpg", "fiveleaves.jpg", "cafelore.jpg", "confessional.jpg", "barrafina.jpg", "donostia.jpg", "royaloak.jpg", "thaicafe.jpg"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +37,7 @@ class FoodTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return restaurants.count
     }
 
     
@@ -44,7 +45,7 @@ class FoodTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
         cell.textLabel?.text = restaurants[indexPath.row]
-        
+        cell.imageView?.image = UIImage(named: restaurantsImages[indexPath.row]);
         return cell
     }
  
