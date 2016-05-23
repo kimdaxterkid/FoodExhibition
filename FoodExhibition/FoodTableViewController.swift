@@ -101,18 +101,47 @@ class FoodTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    //    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    //        if editingStyle == .Delete {
+    //            // Delete the row from the data source
+    //            restaurants.removeAtIndex(indexPath.row)
+    //            restaurantsImages.removeAtIndex(indexPath.row)
+    //            restaurantsLocations.removeAtIndex(indexPath.row)
+    //            restaurantsTypes.removeAtIndex(indexPath.row)
+    //            restaurantsCheckedMark.removeAtIndex(indexPath.row)
+    //            //tableView.reloadData()
+    //            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    //        }
+    //        else if editingStyle == .Insert {
+    //            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    //        }    
+    //    }
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .Default, title: "share") {(action, indexPath) -> Void in
+                let alert = UIAlertController(title: "Share", message: "share to the media you like", preferredStyle: .ActionSheet)
+                let shareQQ = UIAlertAction(title: "QQ", style: .Default, handler: nil)
+                let shareWeChat = UIAlertAction(title: "Wechat", style: .Default, handler: nil)
+                let shareWeibo = UIAlertAction(title: "Weibo", style: .Default, handler: nil)
+                alert.addAction(shareQQ)
+                alert.addAction(shareWeChat)
+                alert.addAction(shareWeibo)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        editAction.backgroundColor = UIColor.orangeColor()
+        let deleteAction = UITableViewRowAction(style: .Default, title: "delete"){(action, indexPath) -> Void in
+                // Delete the row from the data source
+                self.restaurants.removeAtIndex(indexPath.row)
+                self.restaurantsImages.removeAtIndex(indexPath.row)
+                self.restaurantsLocations.removeAtIndex(indexPath.row)
+                self.restaurantsTypes.removeAtIndex(indexPath.row)
+                self.restaurantsCheckedMark.removeAtIndex(indexPath.row)
+                //tableView.reloadData()
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+        return [editAction, deleteAction]
     }
-    */
-
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
