@@ -12,6 +12,7 @@
 		158B351A1CF2C0C5005A0753 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158B35191CF2C0C5005A0753 /* Assets.xcassets */; };
 		158B351D1CF2C0C5005A0753 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158B351B1CF2C0C5005A0753 /* LaunchScreen.storyboard */; };
 		158B35251CF2C187005A0753 /* FoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B35241CF2C187005A0753 /* FoodTableViewController.swift */; };
+		158B35271CF2CE52005A0753 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B35261CF2CE52005A0753 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		158B351C1CF2C0C5005A0753 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		158B351E1CF2C0C5005A0753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		158B35241CF2C187005A0753 /* FoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewController.swift; sourceTree = "<group>"; };
+		158B35261CF2CE52005A0753 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				158B35121CF2C0C5005A0753 /* AppDelegate.swift */,
 				158B35161CF2C0C5005A0753 /* Main.storyboard */,
+				158B35261CF2CE52005A0753 /* CustomTableViewCell.swift */,
 				158B35241CF2C187005A0753 /* FoodTableViewController.swift */,
 				158B35191CF2C0C5005A0753 /* Assets.xcassets */,
 				158B351B1CF2C0C5005A0753 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158B35271CF2CE52005A0753 /* CustomTableViewCell.swift in Sources */,
 				158B35131CF2C0C5005A0753 /* AppDelegate.swift in Sources */,
 				158B35251CF2C187005A0753 /* FoodTableViewController.swift in Sources */,
 			);
