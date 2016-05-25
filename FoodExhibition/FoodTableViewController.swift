@@ -10,13 +10,21 @@ import UIKit
 
 class FoodTableViewController: UITableViewController {
     
-    var restaurants = ["HunanKing", "ChineseKitchen", "ChinaInn","HappyWok","MekongCafe","AsiaCafe","Charlis"]
-    var restaurantsImages = ["cafedeadend.jpg", "homei.jpg", "teakha.jpg", "cafeloisl.jpg", "petiteoyster.jpg", "forkeerestaurant.jpg", "posatelier.jpg", "bourkestreetbakery.jpg", "haighschocolate.jpg", "palominoespresso.jpg", "upstate.jpg", "traif.jpg", "grahamavenuemeats.jpg", "wafflewolf.jpg", "fiveleaves.jpg", "cafelore.jpg", "confessional.jpg", "barrafina.jpg", "donostia.jpg", "royaloak.jpg", "thaicafe.jpg"]
-    var restaurantsLocations = ["Umall", "Mapple", "Main Street", "Main Street", "Blacksbrug Square", "Christianburg", "Christianburg", "悉尼", "悉尼", "悉尼", "纽约", "纽约", "纽约", "纽约", "纽约", "纽约", "纽约", "伦敦", "伦敦", "伦敦", "伦敦"]
-    
-    var restaurantsTypes = ["中餐 & 自助","中餐 & 外卖", "中餐 & 外卖", "中式快餐","越南菜 & 泰国菜", "中餐 & 美式中餐", "上海菜", "巧克力", "咖啡", "美式 & 海鲜", "美式", "美式","早餐 & 早午餐", "法式 & 茶", "咖啡 & 茶", "拉丁美式", "西班牙式", "西班牙式", "西班牙式", "英式", "泰式"]
-    var restaurantsCheckedMark = [Bool](count:21,repeatedValue:false)
-    
+//    var restaurants = ["HunanKing", "ChineseKitchen", "ChinaInn","HappyWok","MekongCafe","AsiaCafe","Charlis"]
+//    var restaurantsImages = ["cafedeadend.jpg", "homei.jpg", "teakha.jpg", "cafeloisl.jpg", "petiteoyster.jpg", "forkeerestaurant.jpg", "posatelier.jpg", "bourkestreetbakery.jpg", "haighschocolate.jpg", "palominoespresso.jpg", "upstate.jpg", "traif.jpg", "grahamavenuemeats.jpg", "wafflewolf.jpg", "fiveleaves.jpg", "cafelore.jpg", "confessional.jpg", "barrafina.jpg", "donostia.jpg", "royaloak.jpg", "thaicafe.jpg"]
+//    var restaurantsLocations = ["Umall", "Mapple", "Main Street", "Main Street", "Blacksbrug Square", "Christianburg", "Christianburg", "悉尼", "悉尼", "悉尼", "纽约", "纽约", "纽约", "纽约", "纽约", "纽约", "纽约", "伦敦", "伦敦", "伦敦", "伦敦"]
+//    
+//    var restaurantsTypes = ["中餐 & 自助","中餐 & 外卖", "中餐 & 外卖", "中式快餐","越南菜 & 泰国菜", "中餐 & 美式中餐", "上海菜", "巧克力", "咖啡", "美式 & 海鲜", "美式", "美式","早餐 & 早午餐", "法式 & 茶", "咖啡 & 茶", "拉丁美式", "西班牙式", "西班牙式", "西班牙式", "英式", "泰式"]
+//    var restaurantsCheckedMark = [Bool](count:21,repeatedValue:false)
+    var restaurantsArray = [
+        Restaurant(name: "HunanKing", type: "中餐 & 自助", location: "Umall", image: "cafedeadend.jpg", isVisited: false),
+        Restaurant(name: "ChineseKitchen", type: "中餐 & 外卖", location: "Mapple", image: "homei.jpg", isVisited: false),
+        Restaurant(name: "ChinaInn", type: "中餐 & 外卖", location: "Main Street", image: "teakha.jpg", isVisited: false),
+        Restaurant(name: "HappyWok", type: "中式快餐", location: "Main Street", image: "cafeloisl.jpg", isVisited: false),
+        Restaurant(name: "MekongCafe", type: "越南菜 & 泰国菜", location: "Blacksbrug Square", image: "petiteoyster.jpg", isVisited: false),
+        Restaurant(name: "AsiaCafe", type: "中餐 & 美式中餐", location: "Christianburg", image: "forkeerestaurant.jpg", isVisited: false),
+        Restaurant(name: "Charlis", type: "上海菜", location: "Christianburg", image: "posatelier.jpg", isVisited: false)
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,21 +49,21 @@ class FoodTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return restaurants.count
+        return restaurantsArray.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CustomTableViewCell
         //设置图片的框架
-        cell.restaurantName.text = restaurants[indexPath.row]
-        cell.restaurantImage.image = UIImage(named: restaurantsImages[indexPath.row])
+        cell.restaurantName.text = restaurantsArray[indexPath.row].name
+        cell.restaurantImage.image = UIImage(named: restaurantsArray[indexPath.row].image)
         cell.restaurantImage.layer.cornerRadius = cell.restaurantImage.frame.size.width / 6
         //如果子视图的大小,大于父视图,则裁剪
         cell.restaurantImage.clipsToBounds = true
-        cell.restaurantLoccation.text = restaurantsLocations[indexPath.row]
-        cell.restaurantType.text = restaurantsTypes[indexPath.row]
-        if restaurantsCheckedMark[indexPath.row] == true {
+        cell.restaurantLoccation.text = restaurantsArray[indexPath.row].location
+        cell.restaurantType.text = restaurantsArray[indexPath.row].type
+        if restaurantsArray[indexPath.row].isVisited == true {
             cell.accessoryType = .Checkmark
         }
         else {
@@ -131,11 +139,7 @@ class FoodTableViewController: UITableViewController {
         editAction.backgroundColor = UIColor.orangeColor()
         let deleteAction = UITableViewRowAction(style: .Default, title: "delete"){(action, indexPath) -> Void in
                 // Delete the row from the data source
-                self.restaurants.removeAtIndex(indexPath.row)
-                self.restaurantsImages.removeAtIndex(indexPath.row)
-                self.restaurantsLocations.removeAtIndex(indexPath.row)
-                self.restaurantsTypes.removeAtIndex(indexPath.row)
-                self.restaurantsCheckedMark.removeAtIndex(indexPath.row)
+                self.restaurantsArray.removeAtIndex(indexPath.row)
                 //tableView.reloadData()
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -162,7 +166,7 @@ class FoodTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let destViewController = segue.destinationViewController as! DetailViewController
-            destViewController.restaurantName = restaurantsImages[(tableView.indexPathForSelectedRow?.row)!]
+            destViewController.restaurant = self.restaurantsArray[(tableView.indexPathForSelectedRow!.row)]
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
