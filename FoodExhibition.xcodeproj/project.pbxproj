@@ -62,10 +62,10 @@
 				158B35161CF2C0C5005A0753 /* Main.storyboard */,
 				158B35261CF2CE52005A0753 /* CustomTableViewCell.swift */,
 				158B35241CF2C187005A0753 /* FoodTableViewController.swift */,
+				15347D6C1CF54F210057F796 /* DetailViewController.swift */,
 				158B35191CF2C0C5005A0753 /* Assets.xcassets */,
 				158B351B1CF2C0C5005A0753 /* LaunchScreen.storyboard */,
 				158B351E1CF2C0C5005A0753 /* Info.plist */,
-				15347D6C1CF54F210057F796 /* DetailViewController.swift */,
 			);
 			path = FoodExhibition;
 			sourceTree = "<group>";

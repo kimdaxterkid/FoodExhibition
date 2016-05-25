@@ -155,15 +155,16 @@ class FoodTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            let destViewController = segue.destinationViewController as! DetailViewController
+            destViewController.restaurantName = restaurantsImages[(tableView.indexPathForSelectedRow?.row)!]
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
-
 }
