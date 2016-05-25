@@ -63,7 +63,7 @@ class FoodTableViewController: UITableViewController {
         }
         return cell
     }
- 
+    /*
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //创建响应菜单
         //actionsheet是从底部弹出的
@@ -90,9 +90,8 @@ class FoodTableViewController: UITableViewController {
         alert.addAction(checkMark)
         alert.addAction(cancelAction)
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        
     }
+    */
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
